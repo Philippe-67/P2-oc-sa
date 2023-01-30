@@ -11,15 +11,18 @@ namespace P2FixAnAppDotNetCode.Models
         /// <summary>
         /// Propriété en lecture seule pour affichage seulement
         /// </summary>
-        public IEnumerable<LignePanier> Lignes => GetListeDesLignesDuPanier();
-
+        //public IEnumerable<LignePanier> Lignes => GetListeDesLignesDuPanier();
+        private List<LignePanier> lignesPanier = new List<LignePanier>(); 
+        public IEnumerable<LignePanier> Lignes => lignesPanier;
         /// <summary>
         /// Retour la liste des lignes du panier
         /// </summary>
         /// <returns></returns>
         private List<LignePanier> GetListeDesLignesDuPanier()
         {
-            return new List<LignePanier>();
+            // BeFr - Remplace : return new List<LignePanier>();
+            //             par : return lignesPanier;
+            return lignesPanier;
         }
 
         /// <summary>
@@ -28,6 +31,25 @@ namespace P2FixAnAppDotNetCode.Models
         public void AjouterElement(Produit produit, int quantite)
         {
             // TODO implementer la méthode
+            //BeFr - Ajouter un élément (cf.
+            if (lignesPanier.Exists(p => p.Produit.Id == produit.Id))
+            {
+                foreach (LignePanier ligne in lignesPanier)
+                {
+                    if (ligne.Produit.Id == produit.Id)
+                    {
+                        ligne.Quantite += quantite;
+                    }
+                }
+            }
+            else
+            {
+                lignesPanier.Add(new LignePanier()
+                {
+                    Produit = produit,
+                    Quantite = quantite,
+                });
+            }
         }
 
         /// <summary>
@@ -42,7 +64,13 @@ namespace P2FixAnAppDotNetCode.Models
         public double GetValeurTotale()
         {
             // TODO implementer la méthode
-            return 0.0;
+            //BeFr - Ajout Calcul Total Panier
+            double somme = 0.0;
+            foreach (LignePanier lignes in lignesPanier)
+            {
+                somme += (lignes.Quantite * lignes.Produit.Prix);
+            }
+            return somme;
         }
 
         /// <summary>
@@ -51,7 +79,15 @@ namespace P2FixAnAppDotNetCode.Models
         public double GetValeurMoyenne()
         {
             // TODO implementer la méthode
-            return 0.0;
+            //BeFr - Ajout Calcul Valeur Moyenne
+            double moyenne = 0.0;
+            double quantiteTotale = 0.0;
+            foreach (var lignes in lignesPanier)
+            {
+                moyenne += (lignes.Quantite * lignes.Produit.Prix);
+                quantiteTotale += lignes.Quantite;
+            }
+            return moyenne / quantiteTotale;
         }
 
         /// <summary>
@@ -60,7 +96,14 @@ namespace P2FixAnAppDotNetCode.Models
         public Produit TrouveProduitDansLesLignesDuPanier(int idProduit)
         {
             // TODO implementer la méthode
-            return null;
+            //BeFr
+            Produit trouveProduit = null;
+            foreach (var ligne in lignesPanier)
+            {
+                if (ligne.Produit.Id == idProduit)
+                    trouveProduit = ligne.Produit;
+            }
+            return trouveProduit;
         }
 
         /// <summary>
