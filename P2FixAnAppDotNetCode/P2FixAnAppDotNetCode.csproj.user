@@ -5,6 +5,17 @@
   </PropertyGroup>
   <PropertyGroup>
     <ActiveDebugProfile>P2FixAnAppDotNetCode</ActiveDebugProfile>
+    <NameOfLastUsedPublishProfile>C:\Users\A114SR\source\repos\OCR-P2\P2FixAnAppDotNetCode\Properties\PublishProfiles\P2FixAnAppDotNetCode20230202220437 - Web Deploy.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\Controllers\CommandeController.en.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Produit\Index.en.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Produit\Index.fr.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
 </Project>

@@ -10,7 +10,7 @@ namespace P2FixAnAppDotNetCode.Models
         [BindNever]
         public int IdCommande { get; set; }
         [BindNever]
-        // BeFr - Remplace : public ICollection<LignePanier> Lignes { get; set; }
+        // PCh   Remplace : public ICollection<LignePanier> Lignes { get; set; }
         //             par : public ICollection<LignePanier>? Lignes { get; set; }
         public ICollection<LignePanier>? Lignes { get; set; }
         [Required(ErrorMessage = "ErrorMissingName")]

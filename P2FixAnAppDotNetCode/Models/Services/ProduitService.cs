@@ -20,7 +20,7 @@ namespace P2FixAnAppDotNetCode.Models.Services
         /// Récupère tous les produits depuis l'inventaire
         /// </summary>
 
-            // BeFr - Remplace : public Produit[] GetTousLesProduits()
+            // PCh- Remplace : public Produit[] GetTousLesProduits()
             //             par : public List<Produit> GetTousLesProduits()
             public List<Produit> GetTousLesProduits()
         {
@@ -35,7 +35,7 @@ namespace P2FixAnAppDotNetCode.Models.Services
         public Produit GetProduitParId(int id)
         {
             // TODO implementer la méthode
-            // BeFr - ...
+            // Pch
             var produitListe = _produitRepository.GetTousLesProduits();
             return produitListe.FirstOrDefault(p => p.Id == id);
         }
@@ -47,7 +47,7 @@ namespace P2FixAnAppDotNetCode.Models.Services
         {
             // TODO implementer la méthode
             // met à jour l'inventaire de produit en utilisant la méthode _produitRepository.MetAJourLaQuantiteDunProduit().
-            // BeFr - ... 
+            // PCh
             foreach (LignePanier ligne in panier.Lignes)
             {
                 _produitRepository.MetAJourLaQuantiteDunProduit(ligne.Produit.Id, ligne.Quantite);

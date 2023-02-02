@@ -25,17 +25,21 @@ namespace P2FixAnAppDotNetCode.Models.Services
             string culture = "";
             // TODO completer le code
             // Le langage par défaut est "en", le Français est "fr" et l'espagnol est "es".
-            // BeFr - Ajout sélection langage avec un switch cases
+            // PCh - Ajout sélection langage avec un switch cases
             switch (langage)
             {
-                case "English":
-                    culture = "en";
+                case "Anglais" or "English" or "Inglés":
+                    culture = "en-GB";
                     break;
-                case "French":
-                    culture = "fr";
+                case "Français" or "French" or "Francés":
+                    culture = "fr-FR";
                     break;
+                case "Espagnol" or "Spanish" or "Español":
+                    culture = "es-ES";
+                    break;
+
             }
-            
+
             return culture;
         }
 

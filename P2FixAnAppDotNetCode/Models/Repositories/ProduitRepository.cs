@@ -8,10 +8,10 @@ namespace P2FixAnAppDotNetCode.Models.Repositories
     /// </summary>
     public class ProduitRepository : IProduitRepository
     {
-        // BeFr - Modifie : private static List<Produit> _produits;
+        // PCh - Modifie : private static List<Produit> _produits;
         //            par : private static List<Produit> _produits = new List<Produit>();
         private static List<Produit> _produits = new List<Produit>();
-        // BeFr - Ajout condition (if) : tous les produits = 0 pour refaire le stock
+        // PCh - Ajout condition (if) : tous les produits = 0 pour refaire le stock
         public ProduitRepository()
         {
             if (_produits.Count == 0)
@@ -36,12 +36,12 @@ namespace P2FixAnAppDotNetCode.Models.Repositories
         /// <summary>
         /// Récupère tous les produits depuis l'inventaire
         /// </summary>
-        // BeFr - Remplace : public Produit[] GetTousLesProduits()
+        // PCH- Remplace : public Produit[] GetTousLesProduits()
         //             par : public List<Produit> GetTousLesProduits()
         public List<Produit> GetTousLesProduits()
         {
             List<Produit> liste = _produits.Where(p => p.Stock > 0).OrderBy(p => p.Nom).ToList();
-            // BeFr - Remplace : return liste.ToArray();
+            // PCh - Remplace : return liste.ToArray();
             //             par : return liste;
             return liste;
         }
